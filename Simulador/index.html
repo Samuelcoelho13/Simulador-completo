@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Vendas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #menu, #product-list, #sale-form, #invoice {
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <h1>Menu</h1>
+        <ul>
+            <li><button onclick="visualizarProdutos()">Visualizar produtos cadastrados</button></li>
+            <li><button onclick="mostrarFormularioVenda()">Lançar venda de produto</button></li>
+            <li><button onclick="imprimirNotaFiscal()">Imprimir nota fiscal</button></li>
+            <li><button onclick="iniciarNovaVenda()">Iniciar uma nova venda</button></li>
+            <li><button onclick="sair()">Sair</button></li>
+        </ul>
+    </div>
+    <div id="product-list" style="display:none;">
+        <h2>Produtos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Estoque</th>
+                </tr>
+            </thead>
+            <tbody id="product-table-body">
+                <!-- Produtos serão inseridos aqui -->
+            </tbody>
+        </table>
+        <button onclick="voltarMenu()">Voltar ao Menu</button>
+    </div>
+    <div id="sale-form" style="display:none;">
+        <h2>Lançar Venda</h2>
+        <label for="product-index">Produto:</label>
+        <select id="product-index"></select>
+        <label for="product-quantity">Quantidade:</label>
+        <input type="number" id="product-quantity" min="1">
+        <button onclick="adicionarProdutoVenda()">Adicionar Produto</button>
+        <button onclick="finalizarVenda()">Finalizar Venda</button>
+        <button onclick="voltarMenu()">Voltar ao Menu</button>
+        <h3>Produtos na Venda</h3>
+        <ul id="venda-atual">
+            <!-- Produtos adicionados à venda serão listados aqui -->
+        </ul>
+    </div>
+    <div id="invoice" style="display:none;">
+        <h2>Nota Fiscal</h2>
+        <pre id="invoice-content">
+            <!-- Nota fiscal será inserida aqui -->
+        </pre>
+        <button onclick="voltarMenu()">Voltar ao Menu</button>
+    </div>
+    <script src="simulador.js"></script>
+</body>
+</html>
